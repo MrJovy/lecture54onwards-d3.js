@@ -156,20 +156,41 @@ barChartSpace
 // !---------------------------------------------------------------------------------------------------------->
 // SCATTER PLOT
 
+// var data = [
+//     [400, 200],
+//     [210, 140],
+//     [722, 300],
+//     [70, 160],
+//     [250, 50],
+//     [110, 280],
+//     [699, 225],
+//     [90, 220]
+// ];
+
 var data = [
-    [400, 200],
-    [210, 140],
-    [722, 300],
-    [70, 160],
-    [250, 50],
-    [110, 280],
-    [699, 225],
-    [90, 220]
+    { date: '07/01/2020', num: 20 },
+    { date: '07/02/2020', num: 25 },
+    { date: '07/03/2020', num: 46 },
+    { date: '07/04/2020', num: 37 },
+    { date: '07/05/2020', num: 29 },
+    { date: '07/06/2020', num: 15 },
+    { date: '07/07/2020', num: 12 },
+    { date: '07/08/2020', num: 8 },
+    { date: '07/09/2020', num: 36 },
+    { date: '07/10/2020', num: 7 }
 ];
+
+//d3.timeParse returns a function that formats date data of the same specified
+// format
+var time_parse = d3.timeParse('%m/%d/%Y')
 var chart_width = 800;
 var chart_height = 400;
 var padding = 50;
 
+// Loop though and parse each date
+data.forEach(function (e, i) {
+    data[i].date = time_parse(e.date)
+})
 // Create SVG Element
 var svg = d3.select('#circle_chart')
     .append('svg')
