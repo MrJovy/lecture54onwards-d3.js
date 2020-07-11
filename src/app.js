@@ -84,9 +84,9 @@ function generateData() {
     return data;
 }
 
-var chartData = generateData();
-var chartWidthPx = 800;
-var chartHeightPx = 400;
+var barChartData = generateData();
+var barChartWidthPx = 800;
+var barChartHeightPx = 400;
 var barPadding = 5;
 
 //?------------------------------------------------------------------------------------->
@@ -96,10 +96,10 @@ var barPadding = 5;
 //?------------------------------------------------------------------------------------->
 
 // Create SVG container for graph
-var chartSpace = d3.select('#chart')
+var barChartSpace = d3.select('#bar_chart')
     .append('svg')
-    .attr('width', chartWidthPx)
-    .attr('height', chartHeightPx);
+    .attr('width', barChartWidthPx)
+    .attr('height', barChartHeightPx);
 
 // Create scales
 //?------------------------------------------------------------------------------------->
@@ -109,14 +109,14 @@ var xScale = d3.scaleLinear()
     //?------------------------------------------------------------------------------------->
     //!The function passing an item from the data array here is called an accessor function
     //?------------------------------------------------------------------------------------->
-    .domain([0, chartData.length])
-    .range([0, chartWidthPx]);
+    .domain([0, barChartData.length])
+    .range([0, barChartWidthPx]);
 
 var yScale = d3.scaleLinear()
-    .domain([0, d3.max(chartData, function (d) {
+    .domain([0, d3.max(barChartData, function (d) {
         return d;
     })])
-    .range([0, chartHeightPx]);
+    .range([0, barChartHeightPx]);
 
 //?------------------------------------------------------------------------------------->
 //! The height and the y axis seemed to be problematic
@@ -131,22 +131,28 @@ var yScale = d3.scaleLinear()
 //! rectangle in the bar graph
 //?------------------------------------------------------------------------------------->
 
-chartSpace
+barChartSpace
     .selectAll('rect')
-    .data(chartData)
+    .data(barChartData)
     .enter()
     .append('rect')
     .attr('x', function (d, i) {
-        // return i * (chartWidthPx / chartData.length + 1) + barPadding;
+        // return i * (barChartWidthPx / barChartData.length + 1) + barPadding;
         return xScale(i);
     })
     .attr('y', function (d) {
-        return chartHeightPx - d * 5;
+        return barChartHeightPx - d * 5;
         // return yScale(d);
     })
-    .attr('width', chartWidthPx / (chartData.length) - barPadding
+    .attr('width', barChartWidthPx / (barChartData.length) - barPadding
     )
     .attr('height', function (d) {
         return d * 5;
     })
     .attr('fill', 'red');
+
+
+// ?---------------------------------------------------------------------------------------------------------->
+// !---------------------------------------------------------------------------------------------------------->
+// SCATTER PLOT
+

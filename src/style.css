@@ -1,4 +1,11 @@
-#chart{
+#bar_chart{
+    width: 800px;
+    height: 400px;
+    background-color: #f7f7f7;
+    margin: 25px auto;
+}
+
+#circle_chart{
     width: 800px;
     height: 400px;
     background-color: #f7f7f7;
