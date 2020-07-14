@@ -4,14 +4,14 @@ import './style.css';
 //-------------------------------------------------------->
 //?------pie chart and donut chart------------------------>
 //! Data
-var data = [25, 25, 25, 25];
+var data = [25, 25, 25, 23, 49, 56, 21, 88, 65];
 var chart_width = 600;
 var chart_height = 600;
 var color = d3.scaleOrdinal(d3.schemeCategory10);
 
 var pie = d3.pie();
 var outer_radius = chart_width / 2;
-var inner_radius = 0;
+var inner_radius = 200;
 var arc = d3.arc()
     .innerRadius(inner_radius)
     .outerRadius(outer_radius);
