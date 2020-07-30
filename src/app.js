@@ -1,7 +1,7 @@
 import * as d3 from 'd3';
 import './style.css';
 import './geo_data.json';
-import './us.json';
+import './us.json'; //! need to import the json script
 
 var chart_width = 800;
 var chart_height = 600;
