@@ -14,10 +14,10 @@ var svg =
     .attr("height", chart_height);
 
 //! Data
-d3.json('/src/us.json').then(function (data) {
+d3.json('/src/geo_data.json').then(function (data) {
     //! Projection 
-    var projection = d3.geoAlbersUsa()
-        .scale(1)
+    var projection = d3.geoEquirectangular()
+        // .scale(0.25)
         .fitSize([chart_width, chart_height], data);
 
     var path = d3.geoPath()
